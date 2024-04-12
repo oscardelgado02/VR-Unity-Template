@@ -1,5 +1,5 @@
 # VR-Unity-Template
- Template for Unity to start developing an VR application.
+ Template for Unity to start developing a VR application.
 
 ## How to use
  You need to make sure you have the following packages installed with the Package Manager:
