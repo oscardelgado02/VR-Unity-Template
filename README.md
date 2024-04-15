@@ -1,5 +1,5 @@
 # VR-Unity-Template
- Template for Unity to start developing a VR application.
+ Unity Template to start developing a VR application.
 
 <div align="center">
 <img src="https://github.com/oscardelgado02/oscardelgado02/blob/main/images/VR-Unity-Template-Preview.png" align="center" style="width: 80%" />
