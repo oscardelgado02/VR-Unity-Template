@@ -10,7 +10,7 @@
  You need to make sure you have the following packages installed with the Package Manager:
  - XR Interaction Toolkit
  - XR Plugin Management
- - 
+
 <div align="center">
 <img src="https://github.com/oscardelgado02/VR-Unity-Template/blob/main/_tutorialGit/1.png" align="center" style="width: 80%" />
 </div>
