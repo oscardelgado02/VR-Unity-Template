@@ -12,14 +12,14 @@
  - XR Plugin Management
 
 <div align="center">
-<img src="https://github.com/oscardelgado02/VR-Unity-Template/blob/main/_tutorialGit/1.png" align="center" style="width: 80%" />
+<img src="https://github.com/oscardelgado02/oscardelgado02/blob/main/images/_tutorial-VR-Unity-Template/1.png" align="center" style="width: 80%" />
 </div>
 <br>
 
  Once installed, you need to go to "Edit/Project Settings/XR Plug-in Management" and select the Plug-in Providers you are going to use (For example, in case you are using Oculus App, then select Oculus).
 
 <div align="center">
-<img src="https://github.com/oscardelgado02/VR-Unity-Template/blob/main/_tutorialGit/2.png" align="center" style="width: 80%" />
+<img src="https://github.com/oscardelgado02/oscardelgado02/blob/main/images/_tutorial-VR-Unity-Template/2.png" align="center" style="width: 80%" />
 </div>
 <br>
 
