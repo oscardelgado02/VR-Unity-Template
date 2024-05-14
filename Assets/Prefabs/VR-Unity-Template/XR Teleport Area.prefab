@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5653488193444052916}
   - component: {fileID: 6134320758767979728}
   - component: {fileID: 4860906284610734599}
-  m_Layer: 3
+  m_Layer: 13
   m_Name: XR Teleport Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}

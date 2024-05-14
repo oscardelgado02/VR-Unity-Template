@@ -11,7 +11,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Teleport
+  - 
   - Water
   - UI
   - Interactable
@@ -21,7 +21,7 @@ TagManager:
   - PhysicHand
   - Door
   - SideDoor
-  - 
+  - Teleport
   - 
   - 
   - 

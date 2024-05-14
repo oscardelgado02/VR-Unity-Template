@@ -78,8 +78,8 @@ public class BoardInteraction : MonoBehaviour
     // On Key Down
     private void OnTriggerDown(Transform controllerTransform)
     {
-        TryInteractWithButton(controllerTransform);
         TryInteractWithDropdown(controllerTransform);
+        TryInteractWithButton(controllerTransform);
     }
 
     // On Key Hold
@@ -142,24 +142,23 @@ public class BoardInteraction : MonoBehaviour
                 {
                     dropdown.Show();
                 }
-
-                // Calculate the hit point's position relative to the dropdown's transform
-                Vector3 hitPointLocal = dropdown.transform.InverseTransformPoint(hit.point);
-
-                // Calculate the normalized value based on the hit point, considering the entire height of the dropdown
-                float dropdownHeight = dropdown.gameObject.GetComponent<RectTransform>().rect.height;
-                float normalizedValue = Mathf.InverseLerp(0, dropdownHeight, hitPointLocal.y);
-
-                // Calculate the item index based on the normalized value
-                int itemCount = dropdown.options.Count;
-                int itemIndex = Mathf.FloorToInt(normalizedValue * (itemCount - 1));
-
-                // Select the item from the dropdown
-                dropdown.value = itemIndex;
-
-                // If the dropdown was initially closed, hide it after updating the value
-                if (!wasExpanded)
+                else
                 {
+                    // Calculate the hit point's position relative to the dropdown's transform
+                    Vector3 hitPointLocal = dropdown.transform.InverseTransformPoint(hit.point);
+
+                    // Calculate the normalized value based on the hit point, considering the entire height of the dropdown
+                    float dropdownHeight = dropdown.gameObject.GetComponent<RectTransform>().rect.height;
+                    float normalizedValue = Mathf.InverseLerp(0, dropdownHeight, hitPointLocal.y);
+
+                    // Calculate the item index based on the normalized value
+                    int itemCount = dropdown.options.Count;
+                    int itemIndex = Mathf.FloorToInt(normalizedValue * (itemCount - 1));
+
+                    // Select the item from the dropdown
+                    dropdown.value = itemIndex;
+
+                    // Hide it after updating the value
                     dropdown.Hide();
                 }
             }

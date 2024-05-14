@@ -39,9 +39,6 @@ public class TeleportationController : MonoBehaviour
     // Teleport layers
     [SerializeField] private LayerMask _teleportLayers;
 
-    // Obstacle layers
-    [SerializeField] private LayerMask _obstacleLayers;
-
     void Start()
     {
         //We don't want the rayInteractor to on unless we're using the forward press on the thumbstick so we deactivate it here
@@ -108,8 +105,8 @@ public class TeleportationController : MonoBehaviour
                 rayInteractor.enabled = false;
                 _teleportIsActive = false;
             }
-            // Check if the ray hits an object with a "Obstacle" layer
-            else if ((_obstacleLayers.value & (1 << raycastHit.collider.gameObject.layer)) != 0)
+            // If it is not colliding with a teleport collider
+            else
             {
                 rayInteractor.enabled = false;
                 _teleportIsActive = false;

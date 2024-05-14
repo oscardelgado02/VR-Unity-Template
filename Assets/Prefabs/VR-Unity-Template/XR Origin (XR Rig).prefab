@@ -231,7 +231,6 @@ GameObject:
   - component: {fileID: 1736472131469961015}
   - component: {fileID: 7268429878207219682}
   - component: {fileID: 3794726797307822615}
-  - component: {fileID: 4788215834795994610}
   - component: {fileID: 1405613218792042170}
   m_Layer: 0
   m_Name: XR Origin (XR Rig)
@@ -357,28 +356,6 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: -6493913391331992944, guid: c348712bda248c246b8c49b3db54643f, type: 3}
---- !u!114 &4788215834795994610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677795777213897205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3500e7d04f56222418e2717dce723ea1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetController: 0
-  inputAction: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  rayInteractor: {fileID: 8027536522824531502}
-  teleportationProvider: {fileID: 7268429878207219682}
-  _teleportLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  _obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 6592
 --- !u!114 &1405613218792042170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,6 +388,7 @@ GameObject:
   - component: {fileID: 8027536522824531502}
   - component: {fileID: 3178839899922899391}
   - component: {fileID: 3118153089286878142}
+  - component: {fileID: 4991378893797482712}
   m_Layer: 0
   m_Name: Right Teleport Ray Interactor
   m_TagString: Untagged
@@ -537,7 +515,7 @@ MonoBehaviour:
   m_ConeCastAngle: 6
   m_RaycastMask:
     serializedVersion: 2
-    m_Bits: 960
+    m_Bits: 14785
   m_RaycastTriggerInteraction: 1
   m_RaycastSnapVolumeInteraction: 1
   m_HitClosestOnly: 0
@@ -815,6 +793,25 @@ MonoBehaviour:
   m_OverrideInteractorLineOrigin: 1
   m_LineOriginTransform: {fileID: 0}
   m_LineOriginOffset: 0
+--- !u!114 &4991378893797482712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353843922833593585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3500e7d04f56222418e2717dce723ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetController: 0
+  inputAction: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  rayInteractor: {fileID: 8027536522824531502}
+  teleportationProvider: {fileID: 7268429878207219682}
+  _teleportLayers:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!1 &1794211102855527384
 GameObject:
   m_ObjectHideFlags: 0
