@@ -78,6 +78,7 @@ public class BoardInteraction : MonoBehaviour
     // On Key Down
     private void OnTriggerDown(Transform controllerTransform)
     {
+        TryInteractWithDropdownItem(controllerTransform);
         TryInteractWithDropdown(controllerTransform);
         TryInteractWithButton(controllerTransform);
     }
@@ -144,22 +145,37 @@ public class BoardInteraction : MonoBehaviour
                 }
                 else
                 {
-                    // Calculate the hit point's position relative to the dropdown's transform
-                    Vector3 hitPointLocal = dropdown.transform.InverseTransformPoint(hit.point);
-
-                    // Calculate the normalized value based on the hit point, considering the entire height of the dropdown
-                    float dropdownHeight = dropdown.gameObject.GetComponent<RectTransform>().rect.height;
-                    float normalizedValue = Mathf.InverseLerp(0, dropdownHeight, hitPointLocal.y);
-
-                    // Calculate the item index based on the normalized value
-                    int itemCount = dropdown.options.Count;
-                    int itemIndex = Mathf.FloorToInt(normalizedValue * (itemCount - 1));
-
-                    // Select the item from the dropdown
-                    dropdown.value = itemIndex;
-
-                    // Hide it after updating the value
+                    // Hide it otherwise
                     dropdown.Hide();
+                }
+            }
+        }
+    }
+
+    private void TryInteractWithDropdownItem(Transform controllerTransform)
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(controllerTransform.position, controllerTransform.forward, out hit, interactionDistance))
+        {
+            // Check if the hit component is a Toggle
+            Toggle toggle = hit.collider.GetComponent<Toggle>();
+            if (toggle != null)
+            {
+                // Find the parent dropdown of the toggle
+                TMP_Dropdown dropdown = toggle.GetComponentInParent<TMP_Dropdown>();
+                if (dropdown != null)
+                {
+                    // Find the corresponding dropdown option by text
+                    TMP_Dropdown.OptionData optionData = dropdown.options.Find(option => option.text == toggle.GetComponentInChildren<TextMeshProUGUI>().text);
+                    if (optionData != null)
+                    {
+                        // Set the selected option of the dropdown
+                        dropdown.value = dropdown.options.IndexOf(optionData);
+                        // Trigger the selection event of the dropdown
+                        dropdown.onValueChanged.Invoke(dropdown.value);
+                        // Hide the dropdown
+                        dropdown.Hide();
+                    }
                 }
             }
         }
