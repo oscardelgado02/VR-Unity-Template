@@ -79,6 +79,7 @@ public class BoardInteraction : MonoBehaviour
     private void OnTriggerDown(Transform controllerTransform)
     {
         TryInteractWithButton(controllerTransform);
+        TryInteractWithDropdown(controllerTransform);
     }
 
     // On Key Hold
@@ -120,6 +121,47 @@ public class BoardInteraction : MonoBehaviour
 
                 // Set the slider value considering the entire range
                 slider.value = Mathf.Lerp(slider.minValue, slider.maxValue, normalizedValue);
+            }
+        }
+    }
+
+    private void TryInteractWithDropdown(Transform controllerTransform)
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(controllerTransform.position, controllerTransform.forward, out hit, interactionDistance))
+        {
+            // Check if the hit component is a Dropdown
+            TMP_Dropdown dropdown = hit.collider.GetComponent<TMP_Dropdown>();
+            if (dropdown != null)
+            {
+                // Check if the dropdown is already open
+                bool wasExpanded = dropdown.IsExpanded;
+
+                // If not open, simulate a click event on the dropdown to open it
+                if (!wasExpanded)
+                {
+                    dropdown.Show();
+                }
+
+                // Calculate the hit point's position relative to the dropdown's transform
+                Vector3 hitPointLocal = dropdown.transform.InverseTransformPoint(hit.point);
+
+                // Calculate the normalized value based on the hit point, considering the entire height of the dropdown
+                float dropdownHeight = dropdown.gameObject.GetComponent<RectTransform>().rect.height;
+                float normalizedValue = Mathf.InverseLerp(0, dropdownHeight, hitPointLocal.y);
+
+                // Calculate the item index based on the normalized value
+                int itemCount = dropdown.options.Count;
+                int itemIndex = Mathf.FloorToInt(normalizedValue * (itemCount - 1));
+
+                // Select the item from the dropdown
+                dropdown.value = itemIndex;
+
+                // If the dropdown was initially closed, hide it after updating the value
+                if (!wasExpanded)
+                {
+                    dropdown.Hide();
+                }
             }
         }
     }

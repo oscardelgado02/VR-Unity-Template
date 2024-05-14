@@ -378,7 +378,7 @@ MonoBehaviour:
     m_Bits: 8
   _obstacleLayers:
     serializedVersion: 2
-    m_Bits: 448
+    m_Bits: 6592
 --- !u!114 &1405613218792042170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1161,7 +1161,7 @@ MonoBehaviour:
   _detectionDistance: 0.2
   _detectionLayers:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 6528
 --- !u!114 &4844366740627353561
 MonoBehaviour:
   m_ObjectHideFlags: 0

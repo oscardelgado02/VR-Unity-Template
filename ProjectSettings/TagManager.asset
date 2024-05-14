@@ -19,8 +19,8 @@ TagManager:
   - Wall
   - GrabbedInteractable
   - PhysicHand
-  - 
-  - 
+  - Door
+  - SideDoor
   - 
   - 
   - 
