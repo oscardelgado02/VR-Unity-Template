@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PhysicsHand : MonoBehaviour
 {
@@ -15,11 +16,19 @@ public class PhysicsHand : MonoBehaviour
     [SerializeField] private float rotationStrength = 30;
     [SerializeField] private float rotationThreshold = 10f;
 
-    // Layers from objects that can be grabbed
-    [SerializeField] private LayerMask _defaultObjectLayer;
+    //// Layers from objects that can be grabbed
+    //[SerializeField] private LayerMask _defaultObjectLayer;
 
-    // Layers that will replace the objects that can be grabbed layers
-    [SerializeField] private LayerMask _grabbedObjectLayer;
+    //// Layers that will replace the objects that can be grabbed layers
+    //[SerializeField] private LayerMask _grabbedObjectLayer;
+
+    // List of layers from objects that can be grabbed
+    [SerializeField]
+    private string defaultObjectLayer = "Interactable";
+
+    // List of layers that will replace the objects that can be grabbed layers
+    [SerializeField]
+    private string grabbedObjectLayer = "GrabbedInteractable";
 
     private void Start()
     {
@@ -29,10 +38,18 @@ public class PhysicsHand : MonoBehaviour
             GameObject grabbedObj = args.interactableObject.transform.gameObject;   // We get the GameObject of the grabbed object
 
             // If the grabbedObj layer is inside defaultObjectLayer, then we change it to its corresponding grabbedObjectLayer layer
-            if((_defaultObjectLayer.value & (1 << grabbedObj.layer)) != 0)
+            if (grabbedObj.layer == LayerMask.NameToLayer(defaultObjectLayer))
             {
-                ChangeLayerToObjAndChildren(grabbedObj, FindCorrespondingLayer(grabbedObj.layer, _grabbedObjectLayer));    // We change the layer
+                Debug.Log("Grabbing");
+                ChangeLayerToObjAndChildren(grabbedObj, LayerMask.NameToLayer(grabbedObjectLayer));    // We change the layer
             }
+
+            //if((_defaultObjectLayer.value & (1 << grabbedObj.layer)) != 0)
+            //{
+            //    int positionIdx = FindLayerPosition(_defaultObjectLayer, grabbedObj.layer);
+            //    if(positionIdx>-1)
+            //        ChangeLayerToObjAndChildren(grabbedObj, GetNthLayer(_grabbedObjectLayer, positionIdx));    // We change the layer
+            //}
         });
 
         // In case an object is ungrabbed
@@ -41,25 +58,75 @@ public class PhysicsHand : MonoBehaviour
             GameObject grabbedObj = args.interactableObject.transform.gameObject;   // We get the GameObject of the ungrabbed object
 
             // If the grabbedObj layer is inside grabbedObjectLayer, then we change it to its corresponding defaultObjectLayer layer
-            if ((_grabbedObjectLayer.value & (1 << grabbedObj.layer)) != 0)
-            {
-                ChangeLayerToObjAndChildren(grabbedObj, FindCorrespondingLayer(grabbedObj.layer, _defaultObjectLayer));    // We change the layer
-            }
+            if (grabbedObj.layer == LayerMask.NameToLayer(grabbedObjectLayer))
+                ChangeLayerToObjAndChildren(grabbedObj, LayerMask.NameToLayer(defaultObjectLayer));    // We change the layer
+
+            //if ((_grabbedObjectLayer.value & (1 << grabbedObj.layer)) != 0)
+            //{
+            //    int positionIdx = FindLayerPosition(_grabbedObjectLayer, grabbedObj.layer);
+            //    if (positionIdx > -1)
+            //        ChangeLayerToObjAndChildren(grabbedObj, GetNthLayer(_defaultObjectLayer, positionIdx));    // We change the layer
+            //}
         });
     }
 
-    // Method to find the corresponding layer from the given LayerMask
-    private int FindCorrespondingLayer(int currentLayer, LayerMask layerMask)
+    // Function to find the position of a layer within a layer mask
+    private int FindLayerPosition(LayerMask layerMask, int layer)
     {
-        for (int i = 0; i < 32; i++)
+        int position = 0;
+        int mask = layerMask.value;
+
+        // Iterate over each bit in the layer mask
+        while (mask > 0)
         {
-            if ((layerMask.value & (1 << i)) != 0 && currentLayer != i)
+            // Check if the current bit is set
+            if ((mask & 1) != 0)
             {
-                return i;
+                // If the layer at the current position matches the given layer,
+                // return the current position
+                if (LayerMask.LayerToName(position) == LayerMask.LayerToName(layer))
+                {
+                    return position;
+                }
             }
+
+            // Move to the next bit
+            mask >>= 1;
+            position++;
         }
-        return currentLayer; // Return current layer if corresponding layer not found
+
+        // If the layer is not found, return -1
+        return -1;
     }
+
+
+    // Get the nth layer from _obstacleLayers
+    int GetNthLayer(LayerMask layerMask, int n)
+    {
+        int count = 0;
+        int result = 0;
+        int mask = layerMask.value;
+
+        // Iterate over each bit until we reach the nth bit
+        while (mask != 0 && count < n)
+        {
+            // Isolate the least significant 1 bit
+            int leastSignificantBit = (mask & -mask);
+
+            // Left shift to move to the next bit
+            result = leastSignificantBit << 1;
+
+            // Clear the least significant 1 bit
+            mask &= ~leastSignificantBit;
+
+            // Increment the count
+            count++;
+        }
+
+        return result;
+    }
+
+
 
     private void ChangeLayerToObjAndChildren(GameObject obj, int inputLayer)
     {
