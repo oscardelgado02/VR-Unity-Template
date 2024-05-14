@@ -21,7 +21,7 @@ public class UIBehavior : MonoBehaviour
     {
         _exitButton.onClick.RemoveAllListeners();   // We wipe the current listeners
 
-        _exitButton.onClick.AddListener(() => Application.Quit());
+        _exitButton.onClick.AddListener(() => { Application.Quit(); });
     }
 
     private void GiveFunctionalityToTheSlider()
