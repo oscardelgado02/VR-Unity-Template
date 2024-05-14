@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2896229220344174334}
   - component: {fileID: 7404884888545234830}
   - component: {fileID: 4681645889304005354}
+  - component: {fileID: 2960365575923502613}
   m_Layer: 5
   m_Name: XR UI
   m_TagString: Untagged
@@ -39,7 +40,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.6}
+  m_AnchoredPosition: {x: 0, y: 1.6000061}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6796759171785228568
@@ -87,7 +88,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &2896229220344174334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +139,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae5a29ddee736c48878cfce17b823b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2960365575923502613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55647463484893129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47853f33d1e529b44ab19d452e16aef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _exitButton: {fileID: 3801349979646305305}
+  _exampleSlider: {fileID: 3256487450988192242}
+  _exampleSliderText: {fileID: 2466282142598143372}
 --- !u!1 &105160095235990564
 GameObject:
   m_ObjectHideFlags: 0
