@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - HeadCollider
+  - LeftHandCollider
+  - RightHandCollider
   layers:
   - Default
   - TransparentFX
@@ -11,14 +14,14 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Interactable
+  - NonInteractable
+  - Wall
+  - GrabbedInteractable
+  - PhysicHand
+  - Door
+  - SideDoor
+  - Teleport
   - 
   - 
   - 

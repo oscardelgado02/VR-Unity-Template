@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 571583179842366478}
   - component: {fileID: 4889295174167675236}
   m_Layer: 0
-  m_Name: Reticle
+  m_Name: XR Teleport Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

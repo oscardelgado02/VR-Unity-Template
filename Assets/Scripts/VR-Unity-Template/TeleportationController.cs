@@ -36,6 +36,9 @@ public class TeleportationController : MonoBehaviour
     //Stores Action for Teleport Mode Cancel
     private InputAction _teleportCancel;
 
+    // Teleport layers
+    [SerializeField] private LayerMask _teleportLayers;
+
     void Start()
     {
         //We don't want the rayInteractor to on unless we're using the forward press on the thumbstick so we deactivate it here
@@ -85,22 +88,30 @@ public class TeleportationController : MonoBehaviour
         {
             return;
         }
-        if (!rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit raycastHit))
+
+        // Perform raycast
+        if (rayInteractor.TryGetCurrent3DRaycastHit(out RaycastHit raycastHit))
         {
-            rayInteractor.enabled = false;
-            _teleportIsActive = false;
-            return;
+            // Check if the ray hits an object with a "Teleport" layer
+            if ((_teleportLayers.value & (1 << raycastHit.collider.gameObject.layer)) != 0)
+            {
+                TeleportRequest teleportRequest = new TeleportRequest()
+                {
+                    destinationPosition = raycastHit.point,
+                };
+
+                teleportationProvider.QueueTeleportRequest(teleportRequest);
+
+                rayInteractor.enabled = false;
+                _teleportIsActive = false;
+            }
+            // If it is not colliding with a teleport collider
+            else
+            {
+                rayInteractor.enabled = false;
+                _teleportIsActive = false;
+            }
         }
-
-        TeleportRequest teleportRequest = new TeleportRequest()
-        {
-            destinationPosition = raycastHit.point,
-        };
-
-        teleportationProvider.QueueTeleportRequest(teleportRequest);
-
-        rayInteractor.enabled = false;
-        _teleportIsActive = false;
     }
 
     //This is called when our Teleport Mode Activated action map is triggered
