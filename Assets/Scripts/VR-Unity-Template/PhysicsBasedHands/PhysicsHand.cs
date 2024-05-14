@@ -39,10 +39,7 @@ public class PhysicsHand : MonoBehaviour
 
             // If the grabbedObj layer is inside defaultObjectLayer, then we change it to its corresponding grabbedObjectLayer layer
             if (grabbedObj.layer == LayerMask.NameToLayer(defaultObjectLayer))
-            {
-                Debug.Log("Grabbing");
-                ChangeLayerToObjAndChildren(grabbedObj, LayerMask.NameToLayer(grabbedObjectLayer));    // We change the layer
-            }
+                ChangeLayerToObjAndChildren(grabbedObj, LayerMask.NameToLayer(grabbedObjectLayer), LayerMask.NameToLayer(defaultObjectLayer));    // We change the layer
 
             //if((_defaultObjectLayer.value & (1 << grabbedObj.layer)) != 0)
             //{
@@ -59,7 +56,7 @@ public class PhysicsHand : MonoBehaviour
 
             // If the grabbedObj layer is inside grabbedObjectLayer, then we change it to its corresponding defaultObjectLayer layer
             if (grabbedObj.layer == LayerMask.NameToLayer(grabbedObjectLayer))
-                ChangeLayerToObjAndChildren(grabbedObj, LayerMask.NameToLayer(defaultObjectLayer));    // We change the layer
+                ChangeLayerToObjAndChildren(grabbedObj, LayerMask.NameToLayer(defaultObjectLayer), LayerMask.NameToLayer(grabbedObjectLayer));    // We change the layer
 
             //if ((_grabbedObjectLayer.value & (1 << grabbedObj.layer)) != 0)
             //{
@@ -128,15 +125,19 @@ public class PhysicsHand : MonoBehaviour
 
 
 
-    private void ChangeLayerToObjAndChildren(GameObject obj, int inputLayer)
+    private void ChangeLayerToObjAndChildren(GameObject obj, int inputLayer, int previousLayer)
     {
+        if (obj.layer == previousLayer)
+            obj.layer = inputLayer;   // We change the layer
+
         foreach (Transform child in obj.transform) {
-            child.gameObject.layer = inputLayer;   // We change the layer
+            if(child.gameObject.layer == previousLayer)
+                child.gameObject.layer = inputLayer;   // We change the layer
 
             // If the child has children, recursively change their layers
             if (child.childCount > 0)
             {
-                ChangeLayerToObjAndChildren(child.gameObject, inputLayer);
+                ChangeLayerToObjAndChildren(child.gameObject, inputLayer, previousLayer);
             }
         }
     }

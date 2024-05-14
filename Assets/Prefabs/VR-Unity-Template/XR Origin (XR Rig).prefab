@@ -1004,12 +1004,8 @@ MonoBehaviour:
   maxDistance: 1
   rotationStrength: 30
   rotationThreshold: 10
-  _defaultObjectLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _grabbedObjectLayer:
-    serializedVersion: 2
-    m_Bits: 512
+  defaultObjectLayer: Interactable
+  grabbedObjectLayer: GrabbedInteractable
 --- !u!33 &6686709702747581713
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2161,12 +2157,8 @@ MonoBehaviour:
   maxDistance: 1
   rotationStrength: 30
   rotationThreshold: 10
-  _defaultObjectLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _grabbedObjectLayer:
-    serializedVersion: 2
-    m_Bits: 512
+  defaultObjectLayer: Interactable
+  grabbedObjectLayer: GrabbedInteractable
 --- !u!33 &7281082012700924109
 MeshFilter:
   m_ObjectHideFlags: 0
