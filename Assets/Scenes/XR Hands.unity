@@ -449,6 +449,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae5a29ddee736c48878cfce17b823b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &172083921 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 702759493737770313, guid: 6c54fc807cefc5d42b0d80b4c7ecc03d, type: 3}
+  m_PrefabInstance: {fileID: 2609930746605256983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &175239984
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,6 +2319,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6046353601095556970, guid: 5728b2a531e975f43912f4d7f2b078c1, type: 3}
   m_PrefabInstance: {fileID: 5227700784063018366}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1423266998 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 148525843851096500, guid: 6c54fc807cefc5d42b0d80b4c7ecc03d, type: 3}
+  m_PrefabInstance: {fileID: 2609930746605256983}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1552575904
 GameObject:
   m_ObjectHideFlags: 0
@@ -3078,6 +3088,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6622101163750608886, guid: 6c54fc807cefc5d42b0d80b4c7ecc03d, type: 3}
+      propertyPath: m_LeftHandMesh
+      value: 
+      objectReference: {fileID: 172083921}
+    - target: {fileID: 6622101163750608886, guid: 6c54fc807cefc5d42b0d80b4c7ecc03d, type: 3}
+      propertyPath: m_RightHandMesh
+      value: 
+      objectReference: {fileID: 1423266998}
     - target: {fileID: 7160022135802791374, guid: 6c54fc807cefc5d42b0d80b4c7ecc03d, type: 3}
       propertyPath: m_IsActive
       value: 0
