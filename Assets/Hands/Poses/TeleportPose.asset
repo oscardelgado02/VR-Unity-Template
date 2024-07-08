@@ -18,6 +18,6 @@ MonoBehaviour:
     - m_HandAxis: 0
       m_AlignmentCondition: 0
       m_ReferenceDirection: 0
-      m_AngleTolerance: 60
+      m_AngleTolerance: 80
       m_IgnorePositionY: 0
     m_TargetConditions: []

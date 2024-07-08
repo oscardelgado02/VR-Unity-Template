@@ -2751,10 +2751,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5827744740311058026, guid: 79e43fa3dd1084c4e8fbe6a1d01ef243, type: 3}
-      propertyPath: m_InteractionLayers.m_Bits
-      value: 2147483648
-      objectReference: {fileID: 0}
     - target: {fileID: 8952042836546927652, guid: 79e43fa3dd1084c4e8fbe6a1d01ef243, type: 3}
       propertyPath: m_Name
       value: XR Interaction Hands Setup
@@ -2935,7 +2931,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5112597342961079123, guid: 19364913c8bbf7747b15fffdffa015ae, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6307567311225619568, guid: 19364913c8bbf7747b15fffdffa015ae, type: 3}
       propertyPath: m_LocalPosition.x
