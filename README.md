@@ -56,9 +56,11 @@ There is another scene with Hand Tracking Input instead of controllers. It needs
  - To teleport, open the palm, aim to the location you want to teleport and then pinch to trigger the teleportation.
 
 ## Getting Started
-Ensure you have the following packages installed via the Unity Package Manager:
+All the packages should be installed, but if the template doesn't work, ensure you have the following packages installed via the Unity Package Manager:
 - XR Interaction Toolkit
 - XR Plugin Management
+
+To use the Hand Tracking, it is also necessary to have installed XR Hands.
 
 <div align="center">
   <img src="https://github.com/oscardelgado02/oscardelgado02/blob/main/images/_tutorial-VR-Unity-Template/1.png" align="center" style="width: 80%" />
