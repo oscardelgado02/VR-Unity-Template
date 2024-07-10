@@ -50,6 +50,11 @@ Utilize physics-based hands to manipulate objects within your VR space. Push obj
   <img src="https://github.com/oscardelgado02/oscardelgado02/blob/main/images/vr-Unity-Template/showdown/6-pushingObjects.gif" align="center" style="width: 80%" />
 </div>
 
+### Hand Tracking
+There is another scene with Hand Tracking Input instead of controllers. It needs to be updated to have UI interaction and physic-based hands, but the rest of features are working.
+ - To grab objects, use a pinch gesture.
+ - To teleport, open the palm, aim to the location you want to teleport and then pinch to trigger the teleportation.
+
 ## Getting Started
 Ensure you have the following packages installed via the Unity Package Manager:
 - XR Interaction Toolkit
@@ -60,7 +65,7 @@ Ensure you have the following packages installed via the Unity Package Manager:
 </div>
 <br>
 
-Once installed, navigate to "Edit/Project Settings/XR Plug-in Management" and select the appropriate Plug-in Providers based on your VR hardware (e.g., Oculus).
+Once installed, navigate to "Edit/Project Settings/XR Plug-in Management" and select the appropriate Plug-in Providers based on your VR hardware. For the Hand Tracking, it is necessary to use OpenXR.
 
 <div align="center">
   <img src="https://github.com/oscardelgado02/oscardelgado02/blob/main/images/_tutorial-VR-Unity-Template/2.png" align="center" style="width: 80%" />
